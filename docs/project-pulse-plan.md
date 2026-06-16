@@ -133,6 +133,10 @@ Project Pulse is a browser-based dashboard that displays the health and priority
 
 ## Sequential constraints
 
+## Dependencies overview
+
+This plan explicitly documents dependencies between phases so work can be sequenced safely.
+
 1. **Phase 3 requires Phase 1 to be complete** — the HTML/JS must know the JSON schema (field names) before it can render cards.
 2. **Phase 3 requires Phase 2 to be complete** — CSS class names agreed in `styles.css` must exist before the HTML uses them, or cards will render without styles.
 3. **Phase 4 requires Phase 3 to be complete** — the launch config opens `index.html`; that file must exist and work.
