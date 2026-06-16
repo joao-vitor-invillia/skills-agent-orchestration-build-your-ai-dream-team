@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Pulse</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="dashboard-header">
+    <h1 class="dashboard-title">Project Pulse</h1>
+  </header>
+  <main>
+    <div id="dashboard" class="dashboard">
+      <!-- cards injected here by JS -->
+    </div>
+  </main>
+
+  <script>
+    function toStatusClass(status) {
+      return 'status-' + status.toLowerCase().replace(/\s+/g, '-');
+    }
+
+    function toPriorityClass(priority) {
+      return 'priority-' + priority.toLowerCase();
+    }
+
+    function showError(dashboard) {
+      dashboard.textContent = '';
+
+      const errorMessage = document.createElement('p');
+      errorMessage.className = 'error';
+      errorMessage.textContent = 'Failed to load project data.';
+      dashboard.appendChild(errorMessage);
+    }
+
+    function createProjectCard(project) {
+      const card = document.createElement('article');
+      card.className = 'project-card';
+
+      const title = document.createElement('h2');
+      title.textContent = project.name;
+      card.appendChild(title);
+
+      const cardMeta = document.createElement('div');
+      cardMeta.className = 'card-meta';
+
+      const statusBadge = document.createElement('span');
+      statusBadge.className = toStatusClass(project.status);
+      statusBadge.textContent = project.status;
+      cardMeta.appendChild(statusBadge);
+
+      const priority = document.createElement('span');
+      priority.className = toPriorityClass(project.priority);
+      priority.textContent = 'Priority: ' + project.priority;
+      cardMeta.appendChild(priority);
+
+      card.appendChild(cardMeta);
+
+      const recentActivitySection = document.createElement('div');
+      recentActivitySection.className = 'recent-activity-section';
+
+      const recentActivityLabel = document.createElement('span');
+      recentActivityLabel.className = 'recent-activity';
+      recentActivityLabel.textContent = 'Recent Activity';
+      recentActivitySection.appendChild(recentActivityLabel);
+
+      const activityText = document.createElement('p');
+      activityText.className = 'activity-text';
+      activityText.textContent = project.recentActivity;
+      recentActivitySection.appendChild(activityText);
+
+      card.appendChild(recentActivitySection);
+
+      const description = document.createElement('p');
+      description.textContent = project.description;
+      card.appendChild(description);
+
+      const owner = document.createElement('p');
+      const ownerSmall = document.createElement('small');
+      ownerSmall.textContent = 'Owner: ' + project.owner;
+      owner.appendChild(ownerSmall);
+      card.appendChild(owner);
+
+      return card;
+    }
+
+    async function loadProjects() {
+      const dashboard = document.getElementById('dashboard');
+
+      try {
+        const response = await fetch('project-data.json');
+
+        if (!response.ok) {
+          throw new Error('Project data request failed.');
+        }
+
+        const data = await response.json();
+
+        if (!Array.isArray(data.projects) || data.projects.length === 0) {
+          showError(dashboard);
+          return;
+        }
+
+        data.projects.forEach(function (project) {
+          dashboard.appendChild(createProjectCard(project));
+        });
+      } catch (error) {
+        showError(dashboard);
+      }
+    }
+
+    loadProjects();
+  </script>
+</body>
+</html>

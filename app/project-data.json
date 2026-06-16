@@ -1,0 +1,58 @@
+{
+  "projects": [
+    {
+      "id": "proj-001",
+      "name": "Mobile App Redesign",
+      "owner": "Alice Chen",
+      "status": "On Track",
+      "priority": "High",
+      "recentActivity": "Completed user testing for the updated onboarding flow.",
+      "description": "A redesign of the mobile app focused on clearer navigation, accessibility, and faster task completion."
+    },
+    {
+      "id": "proj-002",
+      "name": "Data Warehouse Migration",
+      "owner": "Marcus Rivera",
+      "status": "At Risk",
+      "priority": "High",
+      "recentActivity": "Identified several legacy data mappings that need additional review.",
+      "description": "A phased migration from legacy reporting tables to a modern cloud data warehouse. The project will improve analytics reliability and reduce manual reconciliation."
+    },
+    {
+      "id": "proj-003",
+      "name": "Customer Support Portal",
+      "owner": "Priya Nair",
+      "status": "Blocked",
+      "priority": "Medium",
+      "recentActivity": "Waiting for SSO configuration approval from the security team.",
+      "description": "A self-service portal that lets customers submit tickets, review knowledge base articles, and track issue status."
+    },
+    {
+      "id": "proj-004",
+      "name": "Billing Automation",
+      "owner": "Jordan Smith",
+      "status": "On Track",
+      "priority": "Medium",
+      "recentActivity": "Deployed invoice validation rules to the staging environment.",
+      "description": "An automation effort to reduce manual billing checks and improve invoice accuracy before customer delivery."
+    },
+    {
+      "id": "proj-005",
+      "name": "Security Training Refresh",
+      "owner": "Elena Garcia",
+      "status": "At Risk",
+      "priority": "Low",
+      "recentActivity": "Draft content is complete, but compliance review is taking longer than planned.",
+      "description": "An update to annual security training materials with new scenarios for phishing awareness and secure data handling."
+    },
+    {
+      "id": "proj-006",
+      "name": "Partner API Launch",
+      "owner": "Noah Williams",
+      "status": "Blocked",
+      "priority": "High",
+      "recentActivity": "External sandbox access is unavailable due to a vendor outage.",
+      "description": "A new API program that enables approved partners to integrate directly with account and order management workflows."
+    }
+  ]
+}
